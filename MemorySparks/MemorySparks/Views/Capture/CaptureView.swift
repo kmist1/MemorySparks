@@ -19,7 +19,7 @@ struct CaptureView: View {
     var body: some View {
         NavigationView {
             CaptureViewContent(viewModel: viewModel)
-                .navigationTitle(viewModel.isEditingExisting ? "Edit Today" : "Today's Memory")
+                .navigationTitle(viewModel.isEditingExisting ? "Edit" : "Today's Memory")
                 .navigationBarTitleDisplayMode(.inline)
         }
     }

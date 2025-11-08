@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct MemoryDetailView: View {
-    let memory: Memory
+    @State var memory: Memory
     let onDelete: () -> Void
     
     @Environment(\.dismiss) var dismiss
@@ -17,7 +17,14 @@ struct MemoryDetailView: View {
     @State private var showingEditView = false
     @State private var showingDeleteAlert = false
     @State private var showingShareSheet = false
-    
+    @ObservedObject private var viewModel: CaptureViewModel
+
+    init(memory: Memory, onDelete: @escaping () -> Void) {
+        self.memory = memory
+        self.onDelete = onDelete
+        self.viewModel = CaptureViewModel(existingMemory: memory)
+    }
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -111,7 +118,7 @@ struct MemoryDetailView: View {
                 }
             }
             .sheet(isPresented: $showingEditView) {
-                EditMemoryView(memory: memory)
+                EditMemoryView(viewModel: viewModel)
             }
             .sheet(isPresented: $showingShareSheet) {
                 if let shareText = createShareText() {
@@ -128,13 +135,20 @@ struct MemoryDetailView: View {
             }
         }
         .onAppear {
+            if let existingMemory = viewModel.getExistingMemory() {
+                self.memory = existingMemory
+            }
+            loadImage()
+        }
+        .onChange(of: viewModel.isMemoryUpdated) { _, _ in
             loadImage()
         }
     }
     
     private func loadImage() {
+
         guard let filename = memory.photoFilename else { return }
-        
+
         DispatchQueue.global(qos: .userInitiated).async {
             if let loadedImage = PhotoStorageManager.shared.loadPhoto(filename: filename) {
                 DispatchQueue.main.async {

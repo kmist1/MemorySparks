@@ -5,68 +5,62 @@
 //  Created by Krunal Mistry on 11/1/25.
 //
 
+//
+//  CaptureViewModel.swift
+//  MemorySparks
+//
 
+import Foundation
 import SwiftUI
 import Combine
-import PhotosUI
 
-class CaptureViewModel: ObservableObject {
-    @Published var entryText: String = ""
-    @Published var selectedImage: UIImage?
+final class CaptureViewModel: ObservableObject {
     @Published var showingImagePicker = false
     @Published var showingCamera = false
     @Published var showConfetti = false
+    @Published var entryText: String = ""
+    @Published var selectedImage: UIImage?
     @Published var isLoading = false
     @Published var errorMessage: String?
-    @Published var existingMemory: Memory?
 
-    private let memoryManager: MemoryManager
-    private let photoManager = PhotoStorageManager.shared
-    private let hapticsManager = HapticsManager.shared
-    private let streakManager = StreakManager.shared
-    private var cancellables = Set<AnyCancellable>()
+    private let memoryManager: MemoryManagerProtocol
+    private let photoManager: PhotoStorageManager
+    private let streakManager: StreakManager
+    private(set) var existingMemory: Memory?
+    @State var isMemoryUpdated: Bool = false
 
     var isEditingExisting: Bool {
         existingMemory != nil
+    }
+
+    init(existingMemory: Memory? = nil,
+         memoryManager: MemoryManagerProtocol = MemoryManager(),
+         photoManager: PhotoStorageManager = .shared,
+         streakManager: StreakManager = .shared) {
+        self.existingMemory = existingMemory
+        self.memoryManager = memoryManager
+        self.photoManager = photoManager
+        self.streakManager = streakManager
+
+        if let memory = existingMemory, let photoFilename = memory.photoFilename {
+            self.entryText = memory.text ?? ""
+            self.selectedImage = photoManager.loadPhoto(filename: photoFilename)
+        }
     }
 
     var canSave: Bool {
         !entryText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || selectedImage != nil
     }
 
-    init(memoryManager: MemoryManager = MemoryManager()) {
-        self.memoryManager = memoryManager
-        loadTodaysMemory()
-    }
-
-    func loadTodaysMemory() {
-        if let memory = memoryManager.getMemory(for: Date()) {
-            loadExistingMemory(memory)
-        }
-    }
-
-    func loadExistingMemory(_ memory: Memory) {
-        existingMemory = memory
-        entryText = memory.text ?? ""
-
-        // Load photo if exists
-        if let filename = memory.photoFilename {
-            selectedImage = photoManager.loadPhoto(filename: filename)
-        }
-    }
-
     func saveMemory() {
         guard canSave else { return }
-
         isLoading = true
         errorMessage = nil
 
-        // Trim text
-        let trimmedText = entryText.trimmingCharacters(in: .whitespacesAndNewlines)
-        let textToSave = trimmedText.isEmpty ? nil : trimmedText
+        let textToSave = entryText.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        // Save photo if new one selected
-        var photoFilename: String? = existingMemory?.photoFilename
+        // Handle photo save or removal
+        var photoFilename: String?
         if let image = selectedImage {
             if let filename = photoManager.savePhoto(image) {
                 photoFilename = filename
@@ -75,44 +69,43 @@ class CaptureViewModel: ObservableObject {
                 isLoading = false
                 return
             }
+        } else if existingMemory?.photoFilename != nil {
+            // User removed existing photo
+            photoFilename = nil
         }
 
-        let result = memoryManager.createMemory(
-            date: Date(),
-            text: textToSave,
-            photoFilename: photoFilename
-        )
+        let result: Result<Memory, Error>
+
+        if let current = existingMemory {
+            // Update the current memory
+            result = memoryManager.updateMemory(current, text: textToSave, photoFilename: photoFilename)
+        } else if let sameDay = memoryManager.getMemory(for: Date()) {
+            // Same day already exists → update that one
+            result = memoryManager.updateMemory(sameDay, text: textToSave, photoFilename: photoFilename)
+            existingMemory = sameDay
+        } else {
+            // Create a brand new memory
+            result = memoryManager.createMemory(date: Date(), text: textToSave, photoFilename: photoFilename)
+        }
 
         switch result {
-        case .success:
-            // Update streak
+        case .success(let savedMemory):
+            existingMemory = savedMemory
             streakManager.updateStreak(for: Date())
-
-            // Trigger success feedback
-            hapticsManager.playSuccess()
-
-            withAnimation(.spring()) {
-                showConfetti = true
-            }
-
-            // Auto-hide confetti after 2 seconds
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                withAnimation {
-                    self.showConfetti = false
-                }
-            }
-
-            isLoading = false
-
+            isMemoryUpdated = true
         case .failure(let error):
-            errorMessage = "Failed to save memory: \(error.localizedDescription)"
-            isLoading = false
+            errorMessage = error.localizedDescription
         }
+
+        isLoading = false
+    }
+
+    func getExistingMemory() -> Memory? {
+        return existingMemory
     }
 
     func deletePhoto() {
         selectedImage = nil
-        hapticsManager.playLight()
     }
 
     func clearAll() {

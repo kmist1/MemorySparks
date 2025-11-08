@@ -9,16 +9,13 @@
 import SwiftUI
 
 struct EditMemoryView: View {
-    let memory: Memory
     
     @Environment(\.dismiss) var dismiss
     @ObservedObject private var viewModel: CaptureViewModel
     @State private var showingSaveAlert = false
     
-    init(memory: Memory) {
-        self.memory = memory
-        viewModel = CaptureViewModel()
-        viewModel.loadExistingMemory(memory)
+    init(viewModel: CaptureViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
