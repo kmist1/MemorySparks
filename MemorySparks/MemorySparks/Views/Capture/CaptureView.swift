@@ -196,7 +196,7 @@ struct CaptureViewContent: View {
             .frame(maxWidth: .infinity)
             .padding()
             .background(viewModel.canSave ? AppConstants.Colors.primary : Color.secondary)
-            .foregroundColor(.white)
+            .foregroundColor(Color.orange.opacity(0.5))
             .clipShape(RoundedRectangle(cornerRadius: 12))
         }
         .disabled(!viewModel.canSave)
