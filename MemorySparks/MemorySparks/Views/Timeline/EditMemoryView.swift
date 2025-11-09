@@ -11,7 +11,7 @@ import SwiftUI
 struct EditMemoryView: View {
     
     @Environment(\.dismiss) var dismiss
-    @ObservedObject private var viewModel: CaptureViewModel
+    private var viewModel: CaptureViewModel
     @State private var showingSaveAlert = false
     
     init(viewModel: CaptureViewModel) {

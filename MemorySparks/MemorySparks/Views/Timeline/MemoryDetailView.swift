@@ -140,7 +140,7 @@ struct MemoryDetailView: View {
             }
             loadImage()
         }
-        .onChange(of: viewModel.isMemoryUpdated) { _, _ in
+        .onChange(of: memory.modifiedAt) { _, _ in
             loadImage()
         }
     }
@@ -159,7 +159,7 @@ struct MemoryDetailView: View {
     }
     
     private func createShareText() -> String? {
-        var text = "✨ Memory from \(DateFormatter.shortDate(from: memory.date ?? Date()))\n\n"
+        var text = "✨ Memory from \(DateFormatter.shortDate(from: memory.date))\n\n"
         
         if let memoryText = memory.text {
             text += memoryText

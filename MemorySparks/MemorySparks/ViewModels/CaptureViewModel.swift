@@ -26,8 +26,7 @@ final class CaptureViewModel: ObservableObject {
     private let memoryManager: MemoryManagerProtocol
     private let photoManager: PhotoStorageManager
     private let streakManager: StreakManager
-    private(set) var existingMemory: Memory?
-    @State var isMemoryUpdated: Bool = false
+    @Published var existingMemory: Memory?
 
     var isEditingExisting: Bool {
         existingMemory != nil
@@ -92,7 +91,6 @@ final class CaptureViewModel: ObservableObject {
         case .success(let savedMemory):
             existingMemory = savedMemory
             streakManager.updateStreak(for: Date())
-            isMemoryUpdated = true
         case .failure(let error):
             errorMessage = error.localizedDescription
         }
