@@ -59,6 +59,8 @@ class TimelineViewModel: ObservableObject {
         case .success:
             // Remove from local array
             memories.removeAll { $0.id == memory.id }
+            // Recalculate streaks after delete
+            StreakManager.shared.recalculateStreaks()
             HapticsManager.shared.playLight()
         case .failure(let error):
             errorMessage = "Failed to delete: \(error.localizedDescription)"

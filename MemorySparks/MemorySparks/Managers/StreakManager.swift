@@ -18,12 +18,7 @@ class StreakManager: ObservableObject {
     private let calendar = Calendar.current
 
     private init() {
-        loadStreakData()
-    }
-
-    private func loadStreakData() {
-        currentStreak = defaults.integer(forKey: AppConstants.UserDefaultsKeys.currentStreak)
-        longestStreak = defaults.integer(forKey: AppConstants.UserDefaultsKeys.longestStreak)
+        recalculateStreaks()
     }
 
     func getStreak() -> Streak {
@@ -39,46 +34,111 @@ class StreakManager: ObservableObject {
     }
 
     func updateStreak(for date: Date) {
-        let lastEntryDate = defaults.object(forKey: "lastEntryDate") as? Date
-        let today = calendar.startOfDay(for: date)
+        // Update last entry date
+        defaults.set(date, forKey: "lastEntryDate")
 
-        if let lastDate = lastEntryDate {
-            let lastDay = calendar.startOfDay(for: lastDate)
-            let daysBetween = calendar.dateComponents([.day], from: lastDay, to: today).day ?? 0
-
-            if daysBetween == 0 {
-                // Same day - don't change streak
-                return
-            } else if daysBetween == 1 {
-                // Consecutive day - increment streak
-                currentStreak += 1
-                defaults.set(currentStreak, forKey: AppConstants.UserDefaultsKeys.currentStreak)
-
-                // Update longest streak if necessary
-                if currentStreak > longestStreak {
-                    longestStreak = currentStreak
-                    defaults.set(longestStreak, forKey: AppConstants.UserDefaultsKeys.longestStreak)
-                }
-            } else {
-                // Streak broken - reset to 1
-                currentStreak = 1
-                defaults.set(1, forKey: AppConstants.UserDefaultsKeys.currentStreak)
-            }
-        } else {
-            // First entry ever
-            currentStreak = 1
-            longestStreak = 1
-            defaults.set(1, forKey: AppConstants.UserDefaultsKeys.currentStreak)
-            defaults.set(1, forKey: AppConstants.UserDefaultsKeys.longestStreak)
+        // Set first entry date if not exists
+        if defaults.object(forKey: AppConstants.UserDefaultsKeys.firstEntryDate) == nil {
             defaults.set(date, forKey: AppConstants.UserDefaultsKeys.firstEntryDate)
         }
 
-        defaults.set(date, forKey: "lastEntryDate")
+        // Recalculate streaks from actual data
+        recalculateStreaks()
+    }
+
+    func recalculateStreaks() {
+        let memoryManager = MemoryManager()
+        let allMemories = memoryManager.getAllMemories()
+
+        guard !allMemories.isEmpty else {
+            currentStreak = 0
+            longestStreak = 0
+            return
+        }
+
+        // Get all memory dates (unique days only)
+        let memoryDates = Set(allMemories.compactMap { memory -> Date? in
+            let date = memory.date
+            return calendar.startOfDay(for: date)
+        }).sorted(by: >)
+
+        guard !memoryDates.isEmpty else {
+            currentStreak = 0
+            longestStreak = 0
+            return
+        }
+
+        // Calculate current streak (from today backwards)
+        let today = calendar.startOfDay(for: Date())
+        var current = 0
+
+        // Check if there's an entry for today or yesterday (streak is active)
+        if memoryDates.contains(today) {
+            current = calculateStreakFrom(date: today, memoryDates: memoryDates)
+        } else if let yesterday = calendar.date(byAdding: .day, value: -1, to: today),
+                  memoryDates.contains(yesterday) {
+            current = calculateStreakFrom(date: yesterday, memoryDates: memoryDates)
+        }
+
+        // Calculate longest streak ever
+        var longest = 0
+        var tempStreak = 0
+        var previousDate: Date?
+
+        for date in memoryDates.reversed() { // Process from oldest to newest
+            if let prevDate = previousDate {
+                let daysBetween = calendar.dateComponents([.day], from: prevDate, to: date).day ?? 0
+
+                if daysBetween == 1 {
+                    // Consecutive day
+                    tempStreak += 1
+                } else {
+                    // Streak broken
+                    longest = max(longest, tempStreak)
+                    tempStreak = 1
+                }
+            } else {
+                // First date
+                tempStreak = 1
+            }
+
+            previousDate = date
+        }
+
+        // Don't forget the last streak
+        longest = max(longest, tempStreak)
+
+        // Update published properties
+        currentStreak = current
+        longestStreak = max(longest, current) // Ensure longest is at least current
+
+        // Save to UserDefaults
+        defaults.set(currentStreak, forKey: AppConstants.UserDefaultsKeys.currentStreak)
+        defaults.set(longestStreak, forKey: AppConstants.UserDefaultsKeys.longestStreak)
+    }
+
+    private func calculateStreakFrom(date: Date, memoryDates: [Date]) -> Int {
+        var streak = 0
+        var checkDate = date
+
+        while memoryDates.contains(checkDate) {
+            streak += 1
+            guard let previousDay = calendar.date(byAdding: .day, value: -1, to: checkDate) else {
+                break
+            }
+            checkDate = previousDay
+        }
+
+        return streak
     }
 
     func resetStreak() {
         currentStreak = 0
+        longestStreak = 0
         defaults.set(0, forKey: AppConstants.UserDefaultsKeys.currentStreak)
+        defaults.set(0, forKey: AppConstants.UserDefaultsKeys.longestStreak)
+        defaults.removeObject(forKey: AppConstants.UserDefaultsKeys.firstEntryDate)
+        defaults.removeObject(forKey: "lastEntryDate")
     }
 
     func getStreakHistory(for days: Int = 30) -> [Date: Bool] {
