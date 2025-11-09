@@ -94,10 +94,13 @@ struct TimelineView: View {
             }
             .sheet(isPresented: $viewModel.showingDetail) {
                 if let memory = viewModel.selectedMemory {
-                    MemoryDetailView(memory: memory, onDelete: {
+                    MemoryDetailView(memory: memory,
+                                     onDelete: {
                         viewModel.deleteMemory(memory)
                         viewModel.showingDetail = false
-                    })
+                    }) {
+                        viewModel.loadMemories()
+                    }
                 }
             }
             .alert("Delete Memory", isPresented: $showingDeleteAlert, presenting: memoryToDelete) { memory in

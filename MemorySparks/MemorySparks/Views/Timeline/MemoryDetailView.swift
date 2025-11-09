@@ -11,7 +11,8 @@ import SwiftUI
 struct MemoryDetailView: View {
     @State var memory: Memory
     let onDelete: () -> Void
-    
+    let onUpdate: () -> Void
+
     @Environment(\.dismiss) var dismiss
     @State private var image: UIImage?
     @State private var showingEditView = false
@@ -19,9 +20,10 @@ struct MemoryDetailView: View {
     @State private var showingShareSheet = false
     @ObservedObject private var viewModel: CaptureViewModel
 
-    init(memory: Memory, onDelete: @escaping () -> Void) {
+    init(memory: Memory, onDelete: @escaping () -> Void, onUpdate: @escaping () -> Void) {
         self.memory = memory
         self.onDelete = onDelete
+        self.onUpdate = onUpdate
         self.viewModel = CaptureViewModel(existingMemory: memory)
     }
 
@@ -142,6 +144,7 @@ struct MemoryDetailView: View {
         }
         .onChange(of: memory.modifiedAt) { _, _ in
             loadImage()
+            onUpdate()
         }
     }
     
