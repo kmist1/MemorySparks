@@ -26,6 +26,7 @@ final class CaptureViewModel: ObservableObject {
     private let memoryManager: MemoryManagerProtocol
     private let photoManager: PhotoStorageManager
     private let streakManager: StreakManager
+    private let hapticsManager = HapticsManager.shared
     @Published var existingMemory: Memory?
 
     var isEditingExisting: Bool {
@@ -90,6 +91,21 @@ final class CaptureViewModel: ObservableObject {
         switch result {
         case .success(let savedMemory):
             existingMemory = savedMemory
+            // Trigger success feedback
+            hapticsManager.playSuccess()
+
+            withAnimation(.spring()) {
+                showConfetti = true
+            }
+
+            // Auto-hide confetti after 2 seconds
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    self.showConfetti = false
+                }
+            }
+
+            isLoading = false
             streakManager.updateStreak(for: Date())
         case .failure(let error):
             errorMessage = error.localizedDescription

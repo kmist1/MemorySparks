@@ -174,7 +174,7 @@ struct CaptureViewContent: View {
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(Color(.systemGray4), lineWidth: 1)
                 )
-                .onChange(of: viewModel.entryText) { newValue in
+                .onChange(of: viewModel.entryText) { _,newValue in
                     // Limit text length
                     if newValue.count > AppConstants.maxTextLength {
                         viewModel.entryText = String(newValue.prefix(AppConstants.maxTextLength))
@@ -185,6 +185,7 @@ struct CaptureViewContent: View {
 
     private var saveButton: some View {
         Button(action: {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             viewModel.saveMemory()
         }) {
             HStack {
