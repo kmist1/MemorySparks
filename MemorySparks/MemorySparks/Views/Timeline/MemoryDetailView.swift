@@ -31,11 +31,11 @@ struct MemoryDetailView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     // Date Header
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(DateFormatter.relativeDate(from: memory.date ?? Date()))
+                        Text(DateFormatter.relativeDate(from: memory.date))
                             .font(.title2)
                             .fontWeight(.bold)
                         
-                        Text(DateFormatter.shortDate(from: memory.date ?? Date()))
+                        Text(DateFormatter.shortDate(from: memory.date))
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }

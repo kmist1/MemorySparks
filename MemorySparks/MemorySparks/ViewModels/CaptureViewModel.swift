@@ -46,6 +46,13 @@ final class CaptureViewModel: ObservableObject {
             self.entryText = memory.text ?? ""
             self.selectedImage = photoManager.loadPhoto(filename: photoFilename)
         }
+
+        // If today's memory is being edited, pre-fill text and photo
+        if existingMemory == nil, let todayMemory = memoryManager.getMemory(for: Date()) {
+            self.existingMemory = todayMemory
+            self.entryText = todayMemory.text ?? ""
+            self.selectedImage = photoManager.loadPhoto(filename: todayMemory.photoFilename ?? "")
+        }
     }
 
     var canSave: Bool {
