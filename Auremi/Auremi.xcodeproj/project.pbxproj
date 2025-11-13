@@ -1,0 +1,621 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		93D077002EB9859100C1D7B4 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 93D076FF2EB9859100C1D7B4 /* ZIPFoundation */; };
+		93D077022EB9859A00C1D7B4 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 93D077012EB9859A00C1D7B4 /* ZIPFoundation */; };
+		93D077042EB985A100C1D7B4 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 93D077032EB985A100C1D7B4 /* ZIPFoundation */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		936BB97A2EB6CF2E00EC4C7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 936BB95C2EB6CF2700EC4C7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 936BB9632EB6CF2700EC4C7E;
+			remoteInfo = Auremi;
+		};
+		936BB9842EB6CF2E00EC4C7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 936BB95C2EB6CF2700EC4C7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 936BB9632EB6CF2700EC4C7E;
+			remoteInfo = Auremi;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		936BB9642EB6CF2700EC4C7E /* Auremi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Auremi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		936BB9792EB6CF2E00EC4C7E /* AuremiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuremiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		936BB9832EB6CF2E00EC4C7E /* AuremiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuremiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		936BB9662EB6CF2700EC4C7E /* Auremi */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Auremi;
+			sourceTree = "<group>";
+		};
+		936BB97C2EB6CF2E00EC4C7E /* AuremiTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AuremiTests;
+			sourceTree = "<group>";
+		};
+		936BB9862EB6CF2E00EC4C7E /* AuremiUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AuremiUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		936BB9612EB6CF2700EC4C7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93D077002EB9859100C1D7B4 /* ZIPFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		936BB9762EB6CF2E00EC4C7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93D077022EB9859A00C1D7B4 /* ZIPFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		936BB9802EB6CF2E00EC4C7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93D077042EB985A100C1D7B4 /* ZIPFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		936BB95B2EB6CF2700EC4C7E = {
+			isa = PBXGroup;
+			children = (
+				936BB9662EB6CF2700EC4C7E /* Auremi */,
+				936BB97C2EB6CF2E00EC4C7E /* AuremiTests */,
+				936BB9862EB6CF2E00EC4C7E /* AuremiUITests */,
+				93D076FE2EB9859100C1D7B4 /* Frameworks */,
+				936BB9652EB6CF2700EC4C7E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		936BB9652EB6CF2700EC4C7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				936BB9642EB6CF2700EC4C7E /* Auremi.app */,
+				936BB9792EB6CF2E00EC4C7E /* AuremiTests.xctest */,
+				936BB9832EB6CF2E00EC4C7E /* AuremiUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		93D076FE2EB9859100C1D7B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		936BB9632EB6CF2700EC4C7E /* Auremi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 936BB98D2EB6CF2E00EC4C7E /* Build configuration list for PBXNativeTarget "Auremi" */;
+			buildPhases = (
+				936BB9602EB6CF2700EC4C7E /* Sources */,
+				936BB9612EB6CF2700EC4C7E /* Frameworks */,
+				936BB9622EB6CF2700EC4C7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				936BB9662EB6CF2700EC4C7E /* Auremi */,
+			);
+			name = Auremi;
+			packageProductDependencies = (
+				93D076FF2EB9859100C1D7B4 /* ZIPFoundation */,
+			);
+			productName = Auremi;
+			productReference = 936BB9642EB6CF2700EC4C7E /* Auremi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		936BB9782EB6CF2E00EC4C7E /* AuremiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 936BB9902EB6CF2E00EC4C7E /* Build configuration list for PBXNativeTarget "AuremiTests" */;
+			buildPhases = (
+				936BB9752EB6CF2E00EC4C7E /* Sources */,
+				936BB9762EB6CF2E00EC4C7E /* Frameworks */,
+				936BB9772EB6CF2E00EC4C7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				936BB97B2EB6CF2E00EC4C7E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				936BB97C2EB6CF2E00EC4C7E /* AuremiTests */,
+			);
+			name = AuremiTests;
+			packageProductDependencies = (
+				93D077012EB9859A00C1D7B4 /* ZIPFoundation */,
+			);
+			productName = AuremiTests;
+			productReference = 936BB9792EB6CF2E00EC4C7E /* AuremiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		936BB9822EB6CF2E00EC4C7E /* AuremiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 936BB9932EB6CF2E00EC4C7E /* Build configuration list for PBXNativeTarget "AuremiUITests" */;
+			buildPhases = (
+				936BB97F2EB6CF2E00EC4C7E /* Sources */,
+				936BB9802EB6CF2E00EC4C7E /* Frameworks */,
+				936BB9812EB6CF2E00EC4C7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				936BB9852EB6CF2E00EC4C7E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				936BB9862EB6CF2E00EC4C7E /* AuremiUITests */,
+			);
+			name = AuremiUITests;
+			packageProductDependencies = (
+				93D077032EB985A100C1D7B4 /* ZIPFoundation */,
+			);
+			productName = AuremiUITests;
+			productReference = 936BB9832EB6CF2E00EC4C7E /* AuremiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		936BB95C2EB6CF2700EC4C7E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					936BB9632EB6CF2700EC4C7E = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					936BB9782EB6CF2E00EC4C7E = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 936BB9632EB6CF2700EC4C7E;
+					};
+					936BB9822EB6CF2E00EC4C7E = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 936BB9632EB6CF2700EC4C7E;
+					};
+				};
+			};
+			buildConfigurationList = 936BB95F2EB6CF2700EC4C7E /* Build configuration list for PBXProject "Auremi" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 936BB95B2EB6CF2700EC4C7E;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				93D076FD2EB9857400C1D7B4 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 936BB9652EB6CF2700EC4C7E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				936BB9632EB6CF2700EC4C7E /* Auremi */,
+				936BB9782EB6CF2E00EC4C7E /* AuremiTests */,
+				936BB9822EB6CF2E00EC4C7E /* AuremiUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		936BB9622EB6CF2700EC4C7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		936BB9772EB6CF2E00EC4C7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		936BB9812EB6CF2E00EC4C7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		936BB9602EB6CF2700EC4C7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		936BB9752EB6CF2E00EC4C7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		936BB97F2EB6CF2E00EC4C7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		936BB97B2EB6CF2E00EC4C7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 936BB9632EB6CF2700EC4C7E /* Auremi */;
+			targetProxy = 936BB97A2EB6CF2E00EC4C7E /* PBXContainerItemProxy */;
+		};
+		936BB9852EB6CF2E00EC4C7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 936BB9632EB6CF2700EC4C7E /* Auremi */;
+			targetProxy = 936BB9842EB6CF2E00EC4C7E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		936BB98B2EB6CF2E00EC4C7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		936BB98C2EB6CF2E00EC4C7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		936BB98E2EB6CF2E00EC4C7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Auremi/Preview Content\"";
+				DEVELOPMENT_TEAM = 8BWMNX8FD2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Auremi needs camera access to capture your daily memories";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Auremi needs photo library access to save your memories";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Auremi does not track you. This is required by App Store.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = KrunalMistry.Auremi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		936BB98F2EB6CF2E00EC4C7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Auremi/Preview Content\"";
+				DEVELOPMENT_TEAM = 8BWMNX8FD2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Auremi needs camera access to capture your daily memories";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Auremi needs photo library access to save your memories";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Auremi does not track you. This is required by App Store.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = KrunalMistry.Auremi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		936BB9912EB6CF2E00EC4C7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8BWMNX8FD2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = KrunalMistry.AuremiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Auremi.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Auremi";
+			};
+			name = Debug;
+		};
+		936BB9922EB6CF2E00EC4C7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8BWMNX8FD2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = KrunalMistry.AuremiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Auremi.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Auremi";
+			};
+			name = Release;
+		};
+		936BB9942EB6CF2E00EC4C7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8BWMNX8FD2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = KrunalMistry.AuremiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Auremi;
+			};
+			name = Debug;
+		};
+		936BB9952EB6CF2E00EC4C7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8BWMNX8FD2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = KrunalMistry.AuremiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Auremi;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		936BB95F2EB6CF2700EC4C7E /* Build configuration list for PBXProject "Auremi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				936BB98B2EB6CF2E00EC4C7E /* Debug */,
+				936BB98C2EB6CF2E00EC4C7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		936BB98D2EB6CF2E00EC4C7E /* Build configuration list for PBXNativeTarget "Auremi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				936BB98E2EB6CF2E00EC4C7E /* Debug */,
+				936BB98F2EB6CF2E00EC4C7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		936BB9902EB6CF2E00EC4C7E /* Build configuration list for PBXNativeTarget "AuremiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				936BB9912EB6CF2E00EC4C7E /* Debug */,
+				936BB9922EB6CF2E00EC4C7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		936BB9932EB6CF2E00EC4C7E /* Build configuration list for PBXNativeTarget "AuremiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				936BB9942EB6CF2E00EC4C7E /* Debug */,
+				936BB9952EB6CF2E00EC4C7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		93D076FD2EB9857400C1D7B4 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.20;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		93D076FF2EB9859100C1D7B4 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93D076FD2EB9857400C1D7B4 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+		93D077012EB9859A00C1D7B4 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93D076FD2EB9857400C1D7B4 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+		93D077032EB985A100C1D7B4 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93D076FD2EB9857400C1D7B4 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 936BB95C2EB6CF2700EC4C7E /* Project object */;
+}
